@@ -269,7 +269,7 @@ body {
   padding: 0 2.4rem;
   width: 104.6rem;
   height: 3.7rem;
-  position: absolute;
+  position: relative;
   left: 32.1rem;
   top: 23.1rem;
   font-size: 1.4rem;

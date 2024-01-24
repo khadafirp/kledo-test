@@ -4,10 +4,13 @@ import gambartiga from "../assets/home-1-1bA.png"
 import gambarempat from "../assets/truck-1-Qzg.png"
 import { useState } from "react"
 import React from "react"
+import { useNavigate } from "react-router"
 
 function DashboardView() {
 
     const [nama, setNama] = useState(null)
+
+    const navigate = useNavigate()
 
     React.useEffect(() => {
         setNama(localStorage.getItem("name"))
@@ -38,7 +41,7 @@ function DashboardView() {
                 </div>
                 </div>
                 <div class="group-2-vZi">
-                <div class="auto-group-eisn-Snx">
+                <div class="auto-group-eisn-Snx" onClick={() => navigate("/admin-shipping-comps")}>
                     <img class="truck-1-Py6" src={gambarempat} alt="gambarempat"/>
                     <p class="shipping-comps-7u6">Shipping Comps</p>
                 </div>

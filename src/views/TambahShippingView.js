@@ -3,7 +3,18 @@ import gambardua from "../assets/log-out-1-idA.png"
 import gambartiga from "../assets/home-1-61A.png"
 import gambarempat from "../assets/truck-1-2iY.png"
 
-function TambahShippingView() {
+import { connect } from "react-redux"
+import { addList } from "../management/actions/ShippingAction"
+import { useState } from "react"
+
+function TambahShippingView({ addList }) {
+
+    const [nama, setNama] = useState(null)
+
+    const tambah = (value) => {
+        addList({name: value})
+    }
+
     return (
         <div class="halaman-tambah-shipping-comps-xDr">
             <div class="header-gvY">
@@ -41,12 +52,19 @@ function TambahShippingView() {
                 <p class="nama-z9r">Nama</p>
                 <p class="nama-harus-diisi-VcQ">Nama harus diisi</p>
                 <p class="tambah-shipping-comps-bvL">Tambah Shipping Comps</p>
-                <div class="rectangle-8-W1i">
-                </div>
-                <div class="group-5-zha">Simpan</div>
+                <input class="rectangle-8-W1i" type="text" onChange={(event) => setNama(event.target.value)}/>
+                <div class="group-5-zha" onClick={() => tambah(nama)}>Simpan</div>
             </div>
             </div>
     )
 }
 
-export default TambahShippingView
+const mapState = (state) => ({
+    namadata: state.shipping.namadata
+})
+
+const mapDispatch = {
+    addList
+}
+
+export default connect(mapState, mapDispatch)(TambahShippingView)

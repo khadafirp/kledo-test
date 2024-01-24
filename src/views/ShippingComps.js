@@ -5,7 +5,28 @@ import gambarempat from "../assets/truck-1.png"
 import gambarlima from "../assets/group-8.png"
 import gambarenam from "../assets/search-1.png"
 
-function ShippingComps() {
+import { connect } from "react-redux"
+import { getList } from "../management/actions/ShippingAction"
+import React, { useState } from "react"
+import { useNavigate } from "react-router"
+
+function ShippingComps({ listData, getList }) {
+
+    const [list, setList] = useState([])
+    const navigate = useNavigate()
+
+    const pencarian = (event) => {
+        var data = listData.filter((value) => value.name.includes(event.target.value))
+        setList(data)
+    }
+
+    React.useEffect(() => {
+        if(list.length === 0){
+            getList()
+            setList(listData)
+        }
+    }, [getList, listData, list])
+
     return (
         <div class="halaman-shipping-comps-Z1E">
             <div class="header-hNL">
@@ -31,7 +52,7 @@ function ShippingComps() {
                 </div>
                 </div>
                 <div class="group-2-rCc">
-                <div class="group-3-mKa">
+                <div class="group-3-mKa" >
                     <img class="truck-1-ugg" src={gambarempat} alt="gambarempat"/>
                     <p class="shipping-comps-Eyr">Shipping Comps</p>
                 </div>
@@ -40,21 +61,32 @@ function ShippingComps() {
                 </div>
                 <div class="rectangle-7-Hx8">
                 </div>
-                <div class="group-7-Q1A">Tony Startk</div>
                 <p class="shipping-comps-sfS">Shipping Comps</p>
                 <div class="rectangle-9-n1i">
                 </div>
                 <p class="nama-73z">Nama</p>
-                <div class="group-5-1QG">Tony Startk</div>
-                <div class="group-6-5Q8">Dr. Bruce</div>
-                <img class="group-8-M6k" src={gambarlima} alt="gambarlima"/>
+                {
+                    list.length === 0 ?
+                    <div class="group-5-1QG">Data tidak ada</div>
+                    :
+                    list.map((value, index) =>
+                            <div className="group-5-1QG" key={index}>{ value.name }</div>
+                    )
+                }
+                <img class="group-8-M6k" src={gambarlima} alt="gambarlima" onClick={() => navigate("/admin-tambah-shipping")}/>
             </div>
-            <div class="rectangle-8-gep">
-                <img class="search-1-Bba" src={gambarenam} alt="gambarenam"/>
-                <p class="cari-6iY">Cari</p>
-            </div>
+            <input class="rectangle-8-gep" placeholder="Cari" onChange={(event) => pencarian(event)}>
+            </input>
             </div>
     )
 }
 
-export default ShippingComps
+const mapState = (state) => ({
+    listData: state.shipping.listData
+})
+
+const mapDispatch = {
+    getList
+}
+
+export default connect(mapState, mapDispatch)(ShippingComps)
