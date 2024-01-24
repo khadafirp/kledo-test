@@ -1,0 +1,272 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 144rem;
+}.halaman-admin-dashboard-RvU {
+  overflow: hidden;
+  position: relative;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 100%;
+
+  .header-Nqi {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding: 1.1rem 3.5rem 1.1rem 3rem;
+    width: 100%;
+    height: 5.9rem;
+    display: flex;
+    align-items: center;
+    background-color: #4678f3;
+
+    .kledo-test-admin-VfS {
+      line-height: 1.1725;
+      color: #ffffff;
+      font-family: Roboto, 'Source Sans Pro';
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-right: 102.3rem;
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+    .group-1-RJC {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+
+      .ellipse-1-yqW {
+        object-fit: contain;
+        vertical-align: top;
+        flex-shrink: 0;
+        margin-right: 0.4rem;
+        width: 4.2rem;
+        height: 3.7rem;
+      }
+      .tony-stark-vEx {
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1.1725;
+        color: #ffffff;
+        font-family: Roboto, 'Source Sans Pro';
+      }
+    }
+  }
+  .auto-group-kkny-FHE {
+    flex-shrink: 0;
+    width: 146.2rem;
+    height: 96.5rem;
+    position: relative;
+
+    .rectangle-4-BRn {
+      border: solid 0.1rem #e0e0e0;
+      box-sizing: border-box;
+      background-color: #f2f2f2;
+      width: 27.2rem;
+      height: 96.5rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .group-3-iAp {
+      top: 91.3rem;
+      background-color: #4678f3;
+      box-sizing: border-box;
+      padding: 1.3rem 8.8rem 1.5rem 6.4rem;
+      width: 25rem;
+      height: 5.2rem;
+      position: absolute;
+      left: 0;
+
+      .group-4-pje {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding-left: 0.3rem;
+        width: 100%;
+        height: 100%;
+
+        .log-out-1-y6k {
+          position: relative;
+          object-fit: contain;
+          vertical-align: top;
+          flex-shrink: 0;
+          margin-right: 1.3rem;
+          width: 1.8rem;
+          height: 1.8rem;
+        }
+        .log-out-WMa {
+          line-height: 1.1725;
+          color: #ffffff;
+          font-family: Roboto, 'Source Sans Pro';
+          white-space: nowrap;
+          flex-shrink: 0;
+          margin-bottom: 0.2rem;
+          font-size: 1.8rem;
+          font-weight: 700;
+        }
+      }
+    }
+    .group-2-36c {
+      position: absolute;
+      left: 0;
+      top: 0.9rem;
+      border-bottom: solid 0.1rem #e0e0e0;
+      box-sizing: border-box;
+      padding: 0 3rem;
+      width: 25rem;
+      height: 4.4rem;
+
+      .group-3-9vL {
+        height: 2.7692rem;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0.231rem 0rem 0.069rem 0.3rem;
+        width: 12.2rem;
+
+        .home-1-srL {
+          margin: 0rem 1.3rem 0.162rem 0rem;
+          width: 1.8rem;
+          height: 2.3077rem;
+          object-fit: contain;
+          vertical-align: top;
+          flex-shrink: 0;
+        }
+        .dashboard-c3E {
+          color: #2f80ed;
+          font-family: Roboto, 'Source Sans Pro';
+          white-space: nowrap;
+          flex-shrink: 0;
+          margin-top: 0.2692rem;
+          font-size: 1.8rem;
+          font-weight: 200;
+          line-height: 1.1725;
+        }
+      }
+    }
+    .group-2-vZi {
+      position: absolute;
+      left: 0;
+      top: 6.6rem;
+      border-bottom: solid 0.1rem #e0e0e0;
+      box-sizing: border-box;
+      padding: 0rem 5.4rem 0rem 3.1rem;
+      width: 25rem;
+      height: 3.9rem;
+
+      .auto-group-eisn-Snx {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 2.2rem;
+
+        .truck-1-Py6 {
+          position: relative;
+          object-fit: contain;
+          vertical-align: top;
+          flex-shrink: 0;
+          margin: 0.2rem 1.1rem 0rem 0rem;
+          width: 2.2rem;
+          height: 1.8rem;
+        }
+        .shipping-comps-7u6 {
+          white-space: nowrap;
+          flex-shrink: 0;
+          font-size: 1.8rem;
+          font-weight: 200;
+          line-height: 1.1725;
+          color: #828282;
+          font-family: Roboto, 'Source Sans Pro';
+        }
+      }
+    }
+    .rectangle-6-qKJ {
+      position: absolute;
+      left: 24.8rem;
+      top: 0;
+      background-color: #bdbdbd;
+      width: 119.2rem;
+      height: 96.5rem;
+    }
+    .rectangle-7-Na8 {
+      left: 28.3rem;
+      top: 3.7rem;
+      background-color: #ffffff;
+      border-radius: 1.8rem;
+      width: 112.2rem;
+      height: 88.9rem;
+      position: absolute;
+    }
+    .dashboard-Vue {
+      left: 31.7rem;
+      top: 6.1rem;
+      line-height: 1.1725;
+      font-family: Roboto, 'Source Sans Pro';
+      width: 11.7rem;
+      height: 2.9rem;
+      position: absolute;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #000000;
+      white-space: nowrap;
+    }
+    .rectangle-10-D4x {
+      height: 47.8rem;
+      position: absolute;
+      left: 42.9rem;
+      top: 23.3rem;
+      background-color: #f2f2f2;
+      border-radius: 0.8rem;
+      width: 86.6rem;
+    }
+    .group-5-8hi {
+      width: 26.6rem;
+      height: 8.8rem;
+      position: absolute;
+      left: 73.3rem;
+      top: 43.9rem;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      .selamat-datang-4bN {
+        font-size: 3.6rem;
+        font-weight: 700;
+        line-height: 1.1725;
+        color: #828282;
+        font-family: Roboto, 'Source Sans Pro';
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-bottom: 1.6rem;
+      }
+      .tony-stark-b5W {
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-right: 0.9rem;
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 1.1725;
+        color: #bdbdbd;
+        font-family: Roboto, 'Source Sans Pro';
+      }
+    }
+  }
+}

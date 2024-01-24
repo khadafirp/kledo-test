@@ -1,0 +1,179 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 144rem;
+}.halaman-login-q1e {
+  width: 100%;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding-bottom: 23.2rem;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .header-mR6 {
+    padding: 0rem 4rem 0rem 3rem;
+    width: 100%;
+    align-items: center;
+    flex-shrink: 0;
+    margin-bottom: 17.3rem;
+    box-sizing: border-box;
+    background-color: #4678f3;
+    height: 5.9rem;
+    display: flex;
+
+    .kledo-test-gHA {
+      line-height: 1.1725;
+      color: #ffffff;
+      font-family: Roboto, 'Source Sans Pro';
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-right: 108.7rem;
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+    .main-menu-D2C {
+      align-items: center;
+      flex-shrink: 0;
+      height: 100%;
+      display: flex;
+
+      .profile-NQt {
+        color: #ffffff;
+        font-family: Roboto, 'Source Sans Pro';
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin: 0.1rem 2.3rem 0rem 0rem;
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1.1725;
+      }
+      .auto-group-kyhi-hTA {
+        white-space: nowrap;
+        display: flex;
+        background-color: #000000;
+        flex-shrink: 0;
+        width: 7rem;
+        line-height: 1.1725;
+        font-weight: 400;
+        color: #ffffff;
+        font-family: Roboto, 'Source Sans Pro';
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 1.8rem;
+      }
+    }
+  }
+  .login-Bt8 {
+    flex-shrink: 0;
+    margin: 0rem 0rem 3rem 0.1rem;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 1.1725;
+    color: #000000;
+    font-family: Roboto, 'Source Sans Pro';
+    white-space: nowrap;
+  }
+  .auto-group-ucey-uZE {
+    border: solid 0.1rem #e2dcdc;
+    border-radius: 2.5rem;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: calc(100% - 69.9rem);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    margin: 0rem 34.9rem 0rem 35rem;
+    padding: 6.4rem 6.3rem 7.5rem 6.6rem;
+
+    .field-email-zqa {
+      margin-bottom: 3.1rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1.2rem;
+      flex-shrink: 0;
+
+      .email-MRE {
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 1.1725;
+        color: #7f7f7f;
+        font-family: Roboto, 'Source Sans Pro';
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-bottom: 1rem;
+      }
+      .rectangle-5-J5a {
+        background-color: #ffffff;
+        border-radius: 1.2rem;
+        flex-shrink: 0;
+        width: 100%;
+        height: 5rem;
+        border: solid 0.1rem #e2dddd;
+        box-sizing: border-box;
+      }
+    }
+    .field-password-p3v {
+      margin-bottom: 7rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1.2rem;
+      flex-shrink: 0;
+
+      .password-ZXJ {
+        flex-shrink: 0;
+        margin-bottom: 1rem;
+        font-size: 2.4rem;
+        font-weight: 700;
+        line-height: 1.1725;
+        color: #7f7f7f;
+        font-family: Roboto, 'Source Sans Pro';
+        white-space: nowrap;
+      }
+      .rectangle-5-hNc {
+        height: 5rem;
+        border: solid 0.1rem #e2dddd;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        border-radius: 1.2rem;
+        flex-shrink: 0;
+        width: 100%;
+      }
+    }
+    .auto-group-18dz-2Qt {
+      align-items: center;
+      justify-content: center;
+      height: 5.5rem;
+      font-weight: 700;
+      font-family: Roboto, 'Source Sans Pro';
+      white-space: nowrap;
+      border-radius: 2.5rem;
+      margin: 0 5.5rem;
+      font-size: 2.4rem;
+      color: #ffffff;
+      width: calc(100% - 11rem);
+      display: flex;
+      background-color: #4678f3;
+      flex-shrink: 0;
+      line-height: 1.1725;
+    }
+  }
+}
