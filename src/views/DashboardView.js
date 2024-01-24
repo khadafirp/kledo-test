@@ -2,15 +2,24 @@ import gambarsatu from "../assets/ellipse-1-5kY.png"
 import gambardua from "../assets/log-out-1-f3r.png"
 import gambartiga from "../assets/home-1-1bA.png"
 import gambarempat from "../assets/truck-1-Qzg.png"
+import { useState } from "react"
+import React from "react"
 
 function DashboardView() {
+
+    const [nama, setNama] = useState(null)
+
+    React.useEffect(() => {
+        setNama(localStorage.getItem("name"))
+    }, [setNama])
+
     return (
         <div class="halaman-admin-dashboard-RvU">
             <div class="header-Nqi">
                 <p class="kledo-test-admin-VfS">KLEDO TEST ADMIN</p>
                 <div class="group-1-RJC">
                 <img class="ellipse-1-yqW" src={gambarsatu} alt="gambarsatu"/>
-                <p class="tony-stark-vEx">Tony Stark</p>
+                <p class="tony-stark-vEx">{nama}</p>
                 </div>
             </div>
             <div class="auto-group-kkny-FHE">
@@ -43,10 +52,10 @@ function DashboardView() {
                 </div>
                 <div class="group-5-8hi">
                 <p class="selamat-datang-4bN">Selamat Datang </p>
-                <p class="tony-stark-b5W">Tony Stark</p>
+                <p class="tony-stark-b5W">{nama}</p>
                 </div>
             </div>
-            </div>
+        </div>
     )
 }
 
