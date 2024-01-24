@@ -6,11 +6,11 @@ import gambarlima from "../assets/group-8.png"
 import gambarenam from "../assets/search-1.png"
 
 import { connect } from "react-redux"
-import { getList } from "../management/actions/ShippingAction"
+import { getList, navigateEdit } from "../management/actions/ShippingAction"
 import React, { useState } from "react"
 import { useNavigate } from "react-router"
 
-function ShippingComps({ listData, getList }) {
+function ShippingComps({ listData, getList, navigateEdit }) {
 
     const [list, setList] = useState([])
     const navigate = useNavigate()
@@ -70,7 +70,10 @@ function ShippingComps({ listData, getList }) {
                     <div class="group-5-1QG">Data tidak ada</div>
                     :
                     list.map((value, index) =>
-                            <div className="group-5-1QG" key={index}>{ value.name }</div>
+                            <div className="group-5-1QG" key={index} onClick={() => navigateEdit({
+                                nama: value.name,
+                                id: value.id
+                            })}>{ value.name }</div>
                     )
                 }
                 <img class="group-8-M6k" src={gambarlima} alt="gambarlima" onClick={() => navigate("/admin-tambah-shipping")}/>
@@ -86,7 +89,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = {
-    getList
+    getList,
+    navigateEdit
 }
 
 export default connect(mapState, mapDispatch)(ShippingComps)

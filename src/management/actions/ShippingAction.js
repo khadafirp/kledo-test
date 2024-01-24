@@ -97,3 +97,71 @@ export const addList = (payload) => {
         }
     }
 }
+
+export const editList = (payload) => {
+    return async (dispatch) => {
+        if(payload.nama === null || payload.nama === ""){
+            basicDialogs({
+                title: "Perhatian !",
+                text: "Form harus diisi.",
+                icon: "error",
+                confirmButtonText: "Tutup"
+            })
+        } else {
+            Swal.showLoading()
+            try {
+                axios.put(
+                    microservices.base_api + "finance/shippingComps/" + payload.id,
+                    {
+                        name: payload.nama
+                    },
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
+                ).then((response) => {
+                    if(response.data.success){
+                        dispatch({
+                            type: "add-list",
+                            action: response.data.data.name
+                        })
+                        basicDialogs({
+                            title: "Berhasil !",
+                            text: response.data.message,
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        })
+                        setTimeout(() => {
+                            dispatch(push("/admin-shipping-comps", replace))
+                        }, 2000)
+                    } else {
+                        basicDialogs({
+                            title: "Gagal memuat data !",
+                            text: response.data.message,
+                            icon: "error",
+                            confirmButtonText: "Tutup"
+                        })
+                    }
+                })
+            } catch (error) {
+                basicDialogs({
+                    title: "Error !",
+                    text: error.message,
+                    icon: "error",
+                    confirmButtonText: "Tutup"
+                })
+            }
+        }
+    }
+}
+
+export const navigateEdit = (payload) => {
+    return async (dispatch) => {
+        dispatch({
+            type: "simpan-data",
+            action: payload
+        })
+        dispatch(push("/admin-edit-shipping"))
+    }
+}

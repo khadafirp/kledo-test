@@ -4,7 +4,26 @@ import gambartiga from "../assets/home-1-t76.png"
 import gambarempat from "../assets/truck-1-CBv.png"
 import gambarlima from "../assets/group-8-Msi.png"
 
-function EditShippingView() {
+import { connect } from "react-redux"
+import { useEffect, useState } from "react"
+import { editList } from "../management/actions/ShippingAction"
+
+function EditShippingView({ nama, id, editList }) {
+
+    const [namaData, setNamaData] = useState(null)
+    const [idData, setIdData] = useState(null)
+
+    const changeVal = (event) => {
+        setNamaData(event)
+    }
+
+    useEffect(() => {
+        if(namaData === null){
+            setNamaData(nama)
+            setIdData(id)
+        }
+    }, [setNamaData, setIdData, id, nama, namaData])
+
     return (
         <div class="halaman-edit-shipping-comps-JnQ">
             <div class="header-3tQ">
@@ -40,14 +59,31 @@ function EditShippingView() {
                 <div class="rectangle-7-2yr">
                 </div>
                 <p class="nama-GNQ">Nama</p>
-                <p class="nama-harus-diisi-XZE">Nama harus diisi</p>
+                {
+                    namaData === null || namaData === "" ?
+                    <p class="nama-harus-diisi-XZE">Nama harus diisi</p>
+                    :
+                    <p></p>
+                }
                 <p class="edit-shipping-comps-aGc">Edit Shipping Comps</p>
-                <div class="rectangle-8-Spc">Tony Stark</div>
-                <div class="group-5-Fn4">Simpan</div>
+                <input class="rectangle-8-Spc"type="text" defaultValue={nama} onChange={(event) => changeVal(event.target.value)} />
+                <button class="group-5-Fn4" onClick={() => editList({
+                    id: idData,
+                    nama: namaData
+                })}>Simpan</button>
                 <img class="group-8-he4" src={gambarlima} alt="gambarlima"/>
             </div>
             </div>
     )
 }
 
-export default EditShippingView
+const mapState = (state) => ({
+    nama: state.shipping.namadata,
+    id: state.shipping.id
+})
+
+const mapDispatch = {
+    editList
+}
+
+export default connect(mapState, mapDispatch)(EditShippingView)

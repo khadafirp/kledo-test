@@ -1,6 +1,7 @@
 const initialState = {
     listData: [],
-    namadata: null
+    namadata: null,
+    id: null
 }
 
 const ShippingReducer = (state = initialState, action) => {
@@ -15,6 +16,20 @@ const ShippingReducer = (state = initialState, action) => {
             return {
                 ...state,
                 namadata: action.action
+            }
+
+        case "simpan-data":
+            return {
+                ...state,
+                namadata: action.action.nama,
+                id: action.action.id
+            }
+
+        case "edit-list":
+            return {
+                ...state,
+                namadata: action.action.nama,
+                id: action.action.id
             }
         default:
             return state
