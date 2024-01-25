@@ -1,18 +1,21 @@
 import { connect } from "react-redux"
 import { login } from "../management/actions/LoginAction.js"
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 function LoginViews({login}) {
 
     var [email, setEmail] = useState(null)
     var [password, setPassword] = useState(null)
 
+    const navigate = useNavigate()
+
     return (
         <div class="halaman-login-q1e">
             <div class="header-mR6">
                 <p class="kledo-test-gHA">KLEDO TEST</p>
                 <div class="main-menu-D2C">
-                <p class="profile-NQt">Profile</p>
+                <div class="profile-NQt" onClick={() => navigate("/profil")}>Profile</div>
                 <div class="auto-group-kyhi-hTA">Login</div>
                 </div>
             </div>
@@ -29,7 +32,8 @@ function LoginViews({login}) {
                 <button class="auto-group-18dz-2Qt" onClick={() => login(
                     {
                         email: email,
-                        password: password
+                        password: password,
+                        isLogin: true
                     }
                 )}>Login</button>
             </div>

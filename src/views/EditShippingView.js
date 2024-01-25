@@ -7,8 +7,9 @@ import gambarlima from "../assets/group-8-Msi.png"
 import { connect } from "react-redux"
 import React, { useState } from "react"
 import { editList, hapusList, getList } from "../management/actions/ShippingAction"
+import { logout } from "../management/actions/LoginAction"
 
-function EditShippingView({ isLoading, nama, id, editList, hapusList, getList, listData }) {
+function EditShippingView({ isLoading, nama, id, editList, hapusList, getList, listData, logout }) {
 
     const [namaData, setNamaData] = useState(null)
     const [idData, setIdData] = useState(null)
@@ -40,7 +41,7 @@ function EditShippingView({ isLoading, nama, id, editList, hapusList, getList, l
                 <div class="rectangle-4-D7z">
                 </div>
                 <div class="group-3-4PW">
-                <div class="group-4-uf2">
+                <div class="group-4-uf2" onClick={() => logout()}>
                     <img class="log-out-1-d5E" src={gambardua} alt="gambardua"/>
                     <p class="log-out-icU">Log Out</p>
                 </div>
@@ -90,7 +91,8 @@ const mapState = (state) => ({
 const mapDispatch = {
     editList,
     hapusList,
-    getList
+    getList,
+    logout
 }
 
 export default connect(mapState, mapDispatch)(EditShippingView)

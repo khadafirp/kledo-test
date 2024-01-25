@@ -7,7 +7,9 @@ import { connect } from "react-redux"
 import { addList } from "../management/actions/ShippingAction"
 import { useState } from "react"
 
-function TambahShippingView({ addList }) {
+import { logout } from "../management/actions/LoginAction"
+
+function TambahShippingView({ addList, logout }) {
 
     const [nama, setNama] = useState(null)
 
@@ -28,7 +30,7 @@ function TambahShippingView({ addList }) {
                 <div class="rectangle-4-GnG">
                 </div>
                 <div class="group-3-zTN">
-                <div class="group-4-i8U">
+                <div class="group-4-i8U" onClick={() => logout()}>
                     <img class="log-out-1-fJc" src={gambardua} alt="gambardua"/>
                     <p class="log-out-bi4">Log Out</p>
                 </div>
@@ -64,7 +66,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = {
-    addList
+    addList,
+    logout
 }
 
 export default connect(mapState, mapDispatch)(TambahShippingView)

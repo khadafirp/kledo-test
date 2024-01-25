@@ -5,8 +5,11 @@ import gambarempat from "../assets/truck-1-Qzg.png"
 import { useState } from "react"
 import React from "react"
 import { useNavigate } from "react-router"
+import { logout } from "../management/actions/LoginAction"
+import { connect } from "react-redux"
+import { getList } from "../management/actions/ShippingAction"
 
-function DashboardView() {
+function DashboardView({logout, getList}) {
 
     const [nama, setNama] = useState(null)
 
@@ -14,7 +17,8 @@ function DashboardView() {
 
     React.useEffect(() => {
         setNama(localStorage.getItem("name"))
-    }, [setNama])
+        getList({name: ""})
+    }, [setNama, getList])
 
     return (
         <div class="halaman-admin-dashboard-RvU">
@@ -29,7 +33,7 @@ function DashboardView() {
                 <div class="rectangle-4-BRn">
                 </div>
                 <div class="group-3-iAp">
-                <div class="group-4-pje">
+                <div class="group-4-pje" onClick={() => logout()}>
                     <img class="log-out-1-y6k" src={gambardua} alt="gambardua"/>
                     <p class="log-out-WMa">Log Out</p>
                 </div>
@@ -62,4 +66,13 @@ function DashboardView() {
     )
 }
 
-export default DashboardView
+const mapState = (state) => ({
+
+})
+
+const mapDispatch = {
+    logout,
+    getList
+}
+
+export default connect(mapState, mapDispatch)(DashboardView)

@@ -8,39 +8,43 @@ import { push, replace } from 'connected-react-router'
 export const getList = (payload) => {
     return async (dispatch) => {
         try {
-            dispatch({
-                type: "get-loader",
-                action: true
-            })
-            setTimeout(() => {
-                axios.get(
-                    microservices.base_api + "finance/shippingComps",
-                    {
-                        headers: {
-                            'Authorization': `Bearer ${localStorage.getItem("token")}`
-                        },
-                        params: payload
-                    }
-                ).then((response) => {
-                    if(response.data.success){
-                        dispatch({
-                            type: "get-list",
-                            action: response.data.data
-                        })
-                        dispatch({
-                            type: "get-loader",
-                            action: false
-                        })
-                    } else {
-                        basicDialogs({
-                            title: "Gagal memuat data !",
-                            text: response.data.message,
-                            icon: "error",
-                            confirmButtonText: "Tutup"
-                        })
-                    }
+            if(localStorage.getItem("token") === null){
+                dispatch(replace("/"))
+            } else {
+                dispatch({
+                    type: "get-loader",
+                    action: true
                 })
-            }, 500)
+                setTimeout(() => {
+                    axios.get(
+                        microservices.base_api + "finance/shippingComps",
+                        {
+                            headers: {
+                                'Authorization': `Bearer ${localStorage.getItem("token")}`
+                            },
+                            params: payload
+                        }
+                    ).then((response) => {
+                        if(response.data.success){
+                            dispatch({
+                                type: "get-list",
+                                action: response.data.data
+                            })
+                            dispatch({
+                                type: "get-loader",
+                                action: false
+                            })
+                        } else {
+                            basicDialogs({
+                                title: "Gagal memuat data !",
+                                text: response.data.message,
+                                icon: "error",
+                                confirmButtonText: "Tutup"
+                            })
+                        }
+                    })
+                }, 500)
+            }
         } catch (error) {
             basicDialogs({
                 title: "Error !",

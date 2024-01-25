@@ -1,7 +1,8 @@
 const initialState = {
     email: null,
     password: null,
-    nama: "Khadafi Rohman Prihanda"
+    nama: null,
+    noHp: null
 }
 
 const LoginReducer = (state = initialState, action) => {
@@ -9,8 +10,9 @@ const LoginReducer = (state = initialState, action) => {
         case "masuk":
             return {
                 ...state,
-                email: action.email,
-                password: action.password
+                email: action.action.email,
+                nama: action.action.name,
+                noHp: action.action.phone_number
             }
         default:
             return state

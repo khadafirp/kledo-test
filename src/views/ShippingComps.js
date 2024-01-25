@@ -9,7 +9,9 @@ import { getList, navigateEdit } from "../management/actions/ShippingAction"
 import React, { useState } from "react"
 import { useNavigate } from "react-router"
 
-function ShippingComps({ isLoading, listData, getList, navigateEdit }) {
+import { logout } from "../management/actions/LoginAction"
+
+function ShippingComps({ isLoading, listData, getList, navigateEdit, logout }) {
 
     const [list, setList] = useState([])
     const navigate = useNavigate()
@@ -39,7 +41,7 @@ function ShippingComps({ isLoading, listData, getList, navigateEdit }) {
                 <div class="rectangle-4-h9N">
                 </div>
                 <div class="group-3-cn8">
-                <div class="group-4-Li8">
+                <div class="group-4-Li8" onClick={() => logout()}>
                     <img class="log-out-1-6BW" src={gambardua} alt="gambardua"/>
                     <p class="log-out-q96">Log Out</p>
                 </div>
@@ -93,7 +95,8 @@ const mapState = (state) => ({
 
 const mapDispatch = {
     getList,
-    navigateEdit
+    navigateEdit,
+    logout
 }
 
 export default connect(mapState, mapDispatch)(ShippingComps)

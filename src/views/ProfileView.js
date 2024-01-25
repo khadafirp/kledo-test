@@ -1,13 +1,30 @@
+import { useNavigate } from "react-router"
 import profilepic from "../assets/ellipse-1-2b6.png"
+import { connect } from "react-redux"
+import { login } from "../management/actions/LoginAction"
+import React from "react"
 
-function ProfileView() {
+function ProfileView({ nama, email, noHp, login }) {
+
+    const navigate = useNavigate()
+
+    React.useEffect(() => {
+        if(nama === null){
+            login({
+                email: "me@kledo.id",
+                password: "123456",
+                isLogin: false
+            })
+        }
+    })
+
     return (
         <div class="halaman-profile-qvC">
             <div class="header-xjv">
                 <p class="kledo-test-UiG">KLEDO TEST</p>
                 <div class="main-menu-c3n">
-                <div class="auto-group-pwdj-y9E">Profile</div>
-                <p class="login-qx8">Login</p>
+                <div class="auto-group-pwdj-y9E" >Profile</div>
+                <div class="login-qx8" onClick={() => navigate("/")}>Login</div>
                 </div>
             </div>
             <p class="profile-mKz">Profile</p>
@@ -17,7 +34,7 @@ function ProfileView() {
                 <p class="login-JUL">Login</p>
                 <div class="field-nama-QnG">
                 <p class="nama-k5S">Nama</p>
-                <p class="tony-stark-V32">Tony Stark</p>
+                <p class="tony-stark-V32">{ nama }</p>
                 </div>
                 <div class="field-nama-1XA">
                 <p class="alamat-Ymz">Alamat</p>
@@ -25,11 +42,11 @@ function ProfileView() {
                 </div>
                 <div class="field-nama-EPv">
                 <p class="no-hp-Zwz">No. HP</p>
-                <p class="item-212-970-4133-6wv">212-970-4133</p>
+                <p class="item-212-970-4133-6wv">{ noHp }</p>
                 </div>
                 <div class="field-nama-dgx">
                 <p class="email-mHN">Email</p>
-                <p class="starkenterprisescom-Jo6">@starkenterprises.com</p>
+                <p class="starkenterprisescom-Jo6">{ email }</p>
                 </div>
                 <div class="field-nama-SeQ">
                 <p class="motto-b1W">Motto</p>
@@ -41,4 +58,14 @@ function ProfileView() {
     )
 }
 
-export default ProfileView
+const mapState = (state) => ({
+    nama: state.login.nama,
+    email: state.login.email,
+    noHp: state.login.noHp
+})
+
+const mapDispatch = {
+    login
+}
+
+export default connect(mapState, mapDispatch)(ProfileView)

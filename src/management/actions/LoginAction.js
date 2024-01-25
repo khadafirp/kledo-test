@@ -16,22 +16,35 @@ export const login = (payload) => {
             })
         } else {
             try {
-            Swal.showLoading()
+                Swal.showLoading()
                 axios.post(microservices.base_api + "authentication/login", payload).then((response) => {
                     if(response.data.success){
-                        basicDialogs({
-                            title: "Login Berhasil !",
-                            text: "Selamat, anda berhasil masuk.",
-                            icon: "success",
-                            confirmButtonText: "OK"
-                        })
-                        localStorage.setItem("token", response.data.data.data.access_token)
-                        localStorage.setItem("name", response.data.data.user.name)
-                        dispatch({
-                            type: "masuk",
-                            action: payload
-                        })
-                        dispatch(replace("/admin-dashboard"))
+                        if(payload.isLogin){
+                            basicDialogs({
+                                title: "Login Berhasil !",
+                                text: "Selamat, anda berhasil masuk.",
+                                icon: "success",
+                                confirmButtonText: "OK"
+                            })
+                            localStorage.setItem("token", response.data.data.data.access_token)
+                            localStorage.setItem("name", response.data.data.user.name)
+                            dispatch({
+                                type: "masuk",
+                                action: payload
+                            })
+                            dispatch(replace("/admin-dashboard"))
+                        } else {
+                            basicDialogs({
+                                title: "Berhasil !",
+                                text: "Data berhasil dimuat.",
+                                icon: "success",
+                                confirmButtonText: "OK"
+                            })
+                            dispatch({
+                                type: "masuk",
+                                action: response.data.data.user
+                            })
+                        }
                     } else {
                         basicDialogs({
                             title: "Login Gagal !",
