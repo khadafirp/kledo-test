@@ -6,9 +6,9 @@ import gambarlima from "../assets/group-8-Msi.png"
 
 import { connect } from "react-redux"
 import { useEffect, useState } from "react"
-import { editList } from "../management/actions/ShippingAction"
+import { editList, hapusList } from "../management/actions/ShippingAction"
 
-function EditShippingView({ nama, id, editList }) {
+function EditShippingView({ nama, id, editList, hapusList }) {
 
     const [namaData, setNamaData] = useState(null)
     const [idData, setIdData] = useState(null)
@@ -71,7 +71,7 @@ function EditShippingView({ nama, id, editList }) {
                     id: idData,
                     nama: namaData
                 })}>Simpan</button>
-                <img class="group-8-he4" src={gambarlima} alt="gambarlima"/>
+                <img class="group-8-he4" src={gambarlima} alt="gambarlima" onClick={() => hapusList({id: idData})}/>
             </div>
             </div>
     )
@@ -83,7 +83,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = {
-    editList
+    editList,
+    hapusList
 }
 
 export default connect(mapState, mapDispatch)(EditShippingView)

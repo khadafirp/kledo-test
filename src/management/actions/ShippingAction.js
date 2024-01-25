@@ -4,9 +4,8 @@ import { basicDialogs } from "../../components/Dialogs/BasicDialogs"
 import axios from 'axios'
 import microservices from '../microservices/Microservices'
 import { push, replace } from 'connected-react-router'
-import { back } from 'redux-first-history/build/es6/actions'
 
-export const getList = () => {
+export const getList = (payload) => {
     return async (dispatch) => {
         try {
             axios.get(
@@ -14,7 +13,8 @@ export const getList = () => {
                 {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem("token")}`
-                    }
+                    },
+                    params: payload
                 }
             ).then((response) => {
                 if(response.data.success){
@@ -152,6 +152,68 @@ export const editList = (payload) => {
                     confirmButtonText: "Tutup"
                 })
             }
+        }
+    }
+}
+
+export const hapusList = (payload) => {
+    return async (dispatch) => {
+        if(payload.id === null || payload.id === ""){
+            basicDialogs({
+                title: "Perhatian !",
+                text: "Maaf ID kosong.",
+                icon: "error",
+                confirmButtonText: "Tutup"
+            })
+        } else {
+            basicDialogs(
+                {
+                    title: "Yakin ?",
+                    text: "Hapus data ?",
+                    icon: "question",
+                    confirmButtonText: "Hapus"
+                },
+                true,
+                () => {
+                    Swal.showLoading()
+                    try {
+                        axios.delete(
+                            microservices.base_api + "finance/shippingComps/" + payload.id,
+                            {
+                                headers: {
+                                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                                }
+                            }
+                        ).then((response) => {
+                            if(response.data.success){
+                                basicDialogs({
+                                    title: "Berhasil !",
+                                    text: response.data.message,
+                                    icon: "success",
+                                    confirmButtonText: "OK"
+                                })
+                                setTimeout(() => {
+                                    dispatch(push("/admin-shipping-comps", replace))
+                                }, 2000)
+                            } else {
+                                basicDialogs({
+                                    title: "Gagal memuat data !",
+                                    text: response.data.message,
+                                    icon: "error",
+                                    confirmButtonText: "Tutup"
+                                })
+                            }
+                        })
+                    } catch (error) {
+                        basicDialogs({
+                            title: "Error !",
+                            text: error.message,
+                            icon: "error",
+                            confirmButtonText: "Tutup"
+                        })
+                    }
+                }
+            )
         }
     }
 }

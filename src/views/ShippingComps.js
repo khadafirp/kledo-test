@@ -3,7 +3,6 @@ import gambardua from "../assets/log-out-1.png"
 import gambartiga from "../assets/home-1.png"
 import gambarempat from "../assets/truck-1.png"
 import gambarlima from "../assets/group-8.png"
-import gambarenam from "../assets/search-1.png"
 
 import { connect } from "react-redux"
 import { getList, navigateEdit } from "../management/actions/ShippingAction"
@@ -22,7 +21,7 @@ function ShippingComps({ listData, getList, navigateEdit }) {
 
     React.useEffect(() => {
         if(list.length === 0){
-            getList()
+            getList({name: ""})
             setList(listData)
         }
     }, [getList, listData, list])
