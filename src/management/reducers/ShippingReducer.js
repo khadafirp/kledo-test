@@ -1,7 +1,8 @@
 const initialState = {
     listData: [],
     namadata: null,
-    id: null
+    id: null,
+    isLoading: false
 }
 
 const ShippingReducer = (state = initialState, action) => {
@@ -30,6 +31,11 @@ const ShippingReducer = (state = initialState, action) => {
                 ...state,
                 namadata: action.action.nama,
                 id: action.action.id
+            }
+        case "get-loader":
+            return {
+                ...state,
+                isLoading: action.action
             }
         default:
             return state

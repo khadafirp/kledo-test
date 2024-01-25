@@ -8,29 +8,39 @@ import { push, replace } from 'connected-react-router'
 export const getList = (payload) => {
     return async (dispatch) => {
         try {
-            axios.get(
-                microservices.base_api + "finance/shippingComps",
-                {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem("token")}`
-                    },
-                    params: payload
-                }
-            ).then((response) => {
-                if(response.data.success){
-                    dispatch({
-                        type: "get-list",
-                        action: response.data.data
-                    })
-                } else {
-                    basicDialogs({
-                        title: "Gagal memuat data !",
-                        text: response.data.message,
-                        icon: "error",
-                        confirmButtonText: "Tutup"
-                    })
-                }
+            dispatch({
+                type: "get-loader",
+                action: true
             })
+            setTimeout(() => {
+                axios.get(
+                    microservices.base_api + "finance/shippingComps",
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem("token")}`
+                        },
+                        params: payload
+                    }
+                ).then((response) => {
+                    if(response.data.success){
+                        dispatch({
+                            type: "get-list",
+                            action: response.data.data
+                        })
+                        dispatch({
+                            type: "get-loader",
+                            action: false
+                        })
+                    } else {
+                        basicDialogs({
+                            title: "Gagal memuat data !",
+                            text: response.data.message,
+                            icon: "error",
+                            confirmButtonText: "Tutup"
+                        })
+                    }
+                })
+            }, 500)
         } catch (error) {
             basicDialogs({
                 title: "Error !",
@@ -39,6 +49,7 @@ export const getList = (payload) => {
                 confirmButtonText: "Tutup"
             })
         }
+        
     }
 }
 
@@ -121,6 +132,7 @@ export const editList = (payload) => {
                         }
                     }
                 ).then((response) => {
+                    console.log("data = " + JSON.stringify(response.data))
                     if(response.data.success){
                         dispatch({
                             type: "add-list",
@@ -220,6 +232,7 @@ export const hapusList = (payload) => {
 
 export const navigateEdit = (payload) => {
     return async (dispatch) => {
+        localStorage.setItem("nama", payload.nama)
         dispatch({
             type: "simpan-data",
             action: payload

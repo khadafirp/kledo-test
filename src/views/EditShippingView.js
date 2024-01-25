@@ -5,10 +5,10 @@ import gambarempat from "../assets/truck-1-CBv.png"
 import gambarlima from "../assets/group-8-Msi.png"
 
 import { connect } from "react-redux"
-import { useEffect, useState } from "react"
-import { editList, hapusList } from "../management/actions/ShippingAction"
+import React, { useState } from "react"
+import { editList, hapusList, getList } from "../management/actions/ShippingAction"
 
-function EditShippingView({ nama, id, editList, hapusList }) {
+function EditShippingView({ isLoading, nama, id, editList, hapusList, getList, listData }) {
 
     const [namaData, setNamaData] = useState(null)
     const [idData, setIdData] = useState(null)
@@ -17,12 +17,15 @@ function EditShippingView({ nama, id, editList, hapusList }) {
         setNamaData(event)
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         if(namaData === null){
-            setNamaData(nama)
-            setIdData(id)
+            getList({
+                name: localStorage.getItem("nama")
+            })
+            setNamaData(listData.length === 0 ? null : listData[0].name)
+            setIdData(listData.length === 0 ? null : listData[0].id)
         }
-    }, [setNamaData, setIdData, id, nama, namaData])
+    }, [setNamaData, setIdData, id, nama, namaData, getList, listData])
 
     return (
         <div class="halaman-edit-shipping-comps-JnQ">
@@ -66,7 +69,7 @@ function EditShippingView({ nama, id, editList, hapusList }) {
                     <p></p>
                 }
                 <p class="edit-shipping-comps-aGc">Edit Shipping Comps</p>
-                <input class="rectangle-8-Spc"type="text" defaultValue={nama} onChange={(event) => changeVal(event.target.value)} />
+                <input class="rectangle-8-Spc"type="text" defaultValue={isLoading ? "Sedang memuat ..." : namaData} onChange={(event) => changeVal(event.target.value)} />
                 <button class="group-5-Fn4" onClick={() => editList({
                     id: idData,
                     nama: namaData
@@ -79,12 +82,15 @@ function EditShippingView({ nama, id, editList, hapusList }) {
 
 const mapState = (state) => ({
     nama: state.shipping.namadata,
-    id: state.shipping.id
+    id: state.shipping.id,
+    listData: state.shipping.listData,
+    isLoading: state.shipping.isLoading
 })
 
 const mapDispatch = {
     editList,
-    hapusList
+    hapusList,
+    getList
 }
 
 export default connect(mapState, mapDispatch)(EditShippingView)

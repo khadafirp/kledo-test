@@ -9,14 +9,14 @@ import { getList, navigateEdit } from "../management/actions/ShippingAction"
 import React, { useState } from "react"
 import { useNavigate } from "react-router"
 
-function ShippingComps({ listData, getList, navigateEdit }) {
+function ShippingComps({ isLoading, listData, getList, navigateEdit }) {
 
     const [list, setList] = useState([])
     const navigate = useNavigate()
 
-    const pencarian = (event) => {
-        var data = listData.filter((value) => value.name.includes(event.target.value))
-        setList(data)
+    const pencarian = (value) => {
+            getList({name: value})
+        setList(listData)
     }
 
     React.useEffect(() => {
@@ -65,6 +65,9 @@ function ShippingComps({ listData, getList, navigateEdit }) {
                 </div>
                 <p class="nama-73z">Nama</p>
                 {
+                    isLoading ?
+                    <div className="group-5-1QG">Sedang memuat data ...</div>
+                    :
                     list.length === 0 ?
                     <div class="group-5-1QG">Data tidak ada</div>
                     :
@@ -77,14 +80,15 @@ function ShippingComps({ listData, getList, navigateEdit }) {
                 }
                 <img class="group-8-M6k" src={gambarlima} alt="gambarlima" onClick={() => navigate("/admin-tambah-shipping")}/>
             </div>
-            <input class="rectangle-8-gep" placeholder="Cari" onChange={(event) => pencarian(event)}>
+            <input class="rectangle-8-gep" placeholder="Cari" onChange={(event) => pencarian(event.target.value)}>
             </input>
             </div>
     )
 }
 
 const mapState = (state) => ({
-    listData: state.shipping.listData
+    listData: state.shipping.listData,
+    isLoading: state.shipping.isLoading
 })
 
 const mapDispatch = {
